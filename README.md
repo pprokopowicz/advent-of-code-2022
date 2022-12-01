@@ -1,6 +1,6 @@
 # Advent of Code 2022
 
-My Rusrt project in which i try to solve [Advent of Code 2022](https://adventofcode.com/2022/) problems.
+My Rust project in which I try to solve [Advent of Code 2022](https://adventofcode.com/2022/) problems.
 
 ## Usage
 
