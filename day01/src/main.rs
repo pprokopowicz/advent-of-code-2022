@@ -1,3 +1,8 @@
+mod parser;
+mod part1;
+mod part2;
+
 fn main() {
-    println!("Hello, World!")
+    part1::solve();
+    part2::solve();
 }
