@@ -6,7 +6,7 @@ pub struct Input {
 }
 
 pub fn parse() -> Vec<Input> {
-    let contents = read_file("day02/input.txt");
+    let contents = read_file("crates/day02/input.txt");
 
     contents
         .lines()

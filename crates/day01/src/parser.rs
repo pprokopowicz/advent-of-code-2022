@@ -1,7 +1,7 @@
 use reader::read_file;
 
 pub fn parse() -> Vec<usize> {
-    let contents = read_file("day01/input.txt");
+    let contents = read_file("crates/day01/input.txt");
 
     let split = contents.split("\n\n").collect::<Vec<&str>>();
 
