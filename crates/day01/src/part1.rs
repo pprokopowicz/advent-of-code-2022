@@ -1,7 +1,5 @@
-use crate::parser;
-
-pub fn solve() {
-    let max = parser::parse().into_iter().max().unwrap();
+pub fn solve(values: &Vec<usize>) {
+    let max = values.iter().max().unwrap();
 
     println!("Part 1 solution: {}", max);
 }

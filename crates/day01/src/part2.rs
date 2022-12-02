@@ -1,7 +1,4 @@
-use crate::parser;
-
-pub fn solve() {
-    let mut values = parser::parse();
+pub fn solve(values: &mut Vec<usize>) {
     values.sort();
 
     let len = values.len();
