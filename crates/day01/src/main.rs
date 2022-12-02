@@ -6,6 +6,7 @@ mod part2;
 
 fn main() {
     let mut values = parse();
+
     part1::solve(&values);
     part2::solve(&mut values);
 }

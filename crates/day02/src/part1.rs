@@ -1,12 +1,10 @@
 use crate::game::{Choice, GameOutcome};
 use crate::opp_choice::opp_choice;
-use crate::parser::parse;
+use crate::parser::Input;
 
-pub fn solve() {
-    let input = parse();
-
+pub fn solve(input: &Vec<Input>) {
     let score = input
-        .into_iter()
+        .iter()
         .map(|input| {
             let opp_choice = opp_choice(&input.lhs);
             let user_choice = user_choice(&input.rhs);
