@@ -34,17 +34,16 @@ fn parse_stack(input: &str) -> Vec<Vec<char>> {
                 .collect::<Vec<char>>()
         })
         .collect::<Vec<Vec<char>>>();
+
     stacks.pop();
     stacks.reverse();
-    let mut flipped_stacks: Vec<Vec<char>> = vec![];
-    for _ in 0..stacks[0].len() {
-        flipped_stacks.push(Vec::new());
-    }
+
+    let mut flipped_stacks: Vec<Vec<char>> = vec![Vec::new(); stacks[0].len()];
 
     for stack in stacks {
-        for (index, c) in stack.iter().enumerate() {
+        for (index, c) in stack.into_iter().enumerate() {
             if !c.is_whitespace() {
-                flipped_stacks[index].push(c.clone());
+                flipped_stacks[index].push(c);
             }
         }
     }
