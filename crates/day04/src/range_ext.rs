@@ -1,6 +1,6 @@
 use std::ops::RangeInclusive;
 
-pub trait Overlaps<Rhs=Self> {
+pub trait Overlaps<Rhs = Self> {
     fn overlaps(&self, rhs: &Rhs) -> bool;
 }
 
@@ -10,7 +10,7 @@ impl Overlaps for RangeInclusive<usize> {
     }
 }
 
-pub trait ContainsRange<Rhs=Self> {
+pub trait ContainsRange<Rhs = Self> {
     fn contains_range(&self, rhs: &Rhs) -> bool;
 }
 
