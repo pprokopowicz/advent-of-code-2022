@@ -1,3 +1,4 @@
+use reader::{read_file, File};
 use std::ops::RangeInclusive;
 
 pub struct Input {
@@ -5,7 +6,9 @@ pub struct Input {
     pub rhs: RangeInclusive<usize>,
 }
 
-pub fn parse(input: &str) -> Vec<Input> {
+pub fn parse() -> Vec<Input> {
+    let input = read_file(File::Day04);
+
     input
         .lines()
         .map(|line| {

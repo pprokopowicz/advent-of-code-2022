@@ -1,4 +1,4 @@
-use reader::read_file;
+use reader::{read_file, File};
 
 #[derive(Clone, Debug)]
 pub struct Instruction {
@@ -14,7 +14,7 @@ pub struct Input {
 }
 
 pub fn parse() -> Input {
-    let input = read_file("crates/day05/input.txt");
+    let input = read_file(File::Day05);
     let split = input.split("\n\n").collect::<Vec<&str>>();
 
     Input {

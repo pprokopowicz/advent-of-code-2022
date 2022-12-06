@@ -1,4 +1,4 @@
-use reader::read_file;
+use reader::{read_file, File};
 
 pub struct Input {
     pub lhs: String,
@@ -6,7 +6,7 @@ pub struct Input {
 }
 
 pub fn parse() -> Vec<Input> {
-    let contents = read_file("crates/day02/input.txt");
+    let contents = read_file(File::Day02);
 
     contents
         .lines()
