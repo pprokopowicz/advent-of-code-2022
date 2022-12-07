@@ -7,7 +7,7 @@ pub fn dir_sizes(node: &Node) -> Vec<usize> {
 
     output.push(node.size());
 
-    for child in &node.children {
+    node.children.iter().for_each(|child| {
         let cloned_child = Rc::clone(child);
         let borrowed_child = cloned_child.borrow();
         match borrowed_child.value {
@@ -17,7 +17,7 @@ pub fn dir_sizes(node: &Node) -> Vec<usize> {
             }
             FileType::File(_, _) => {}
         }
-    }
+    });
 
     output
 }

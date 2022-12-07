@@ -12,7 +12,7 @@ pub fn parse() -> Rc<RefCell<Node>> {
 
     let lines = input.lines().skip(1).collect::<Vec<&str>>();
 
-    for line in lines {
+    lines.iter().for_each(|line| {
         if line.starts_with("$") {
             let command = parse_command(&line);
 
@@ -47,7 +47,7 @@ pub fn parse() -> Rc<RefCell<Node>> {
             }
             current.borrow_mut().children.push(child);
         }
-    }
+    });
 
     root
 }
