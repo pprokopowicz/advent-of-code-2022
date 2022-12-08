@@ -18,3 +18,4 @@ foo@bar:~$ cargo run -p day<day_number>
 - [05](crates/day05)
 - [06](crates/day06)
 - [07](crates/day07)
+- [08](crates/day08)
