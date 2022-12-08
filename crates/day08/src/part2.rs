@@ -3,7 +3,7 @@ pub fn solve(input: &Vec<Vec<u32>>) {
 
     for y in 0..input.len() {
         for x in 0..input[y].len() {
-                        let score = score_top(x, y, input)
+            let score = score_top(x, y, input)
                 * score_bottom(x, y, input)
                 * score_left(x, y, input)
                 * score_right(x, y, input);
