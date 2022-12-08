@@ -11,11 +11,11 @@ foo@bar:~$ cargo run -p day<day_number>
 ```
 
 ## Days
-- [01](crates/day01)
-- [02](crates/day02)
-- [03](crates/day03)
-- [04](crates/day04)
-- [05](crates/day05)
-- [06](crates/day06)
-- [07](crates/day07)
-- [08](crates/day08)
+- [01 - Calorie Counting](crates/day01)
+- [02 - Rock Paper Scissors](crates/day02)
+- [03 - Rucksack Reorganization](crates/day03)
+- [04 - Camp Cleanup](crates/day04)
+- [05 - Supply Stacks](crates/day05)
+- [06 - Tuning Trouble](crates/day06)
+- [07 - No Space Left On Device](crates/day07)
+- [08 - Treetop Tree House](crates/day08)
