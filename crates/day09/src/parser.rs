@@ -13,7 +13,9 @@ pub fn parse() -> Vec<Direction> {
             let direction = Direction::from_str(split[0]).expect("Unknown movement direction.");
             let value = split[1].parse::<usize>().expect("Value is not an integer");
 
-            (0..value).map(|_| direction.clone()).collect::<Vec<Direction>>()
+            (0..value)
+                .map(|_| direction.clone())
+                .collect::<Vec<Direction>>()
         })
         .collect::<Vec<Direction>>()
 }
