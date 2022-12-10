@@ -1,7 +1,7 @@
 use crate::instruction::Instruction;
 
 const ON: char = '#';
-const OFF: char = '.';
+const OFF: char = ' ';
 
 pub fn solve(input: &Vec<Instruction>) {
     let mut x = 1;
