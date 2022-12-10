@@ -20,3 +20,4 @@ foo@bar:~$ cargo run -p day<day_number>
 - [07 - No Space Left On Device](crates/day07)
 - [08 - Treetop Tree House](crates/day08)
 - [09 - Rope Bridge](crates/day09)
+- [10 - Cathode-Ray Tube](crates/day10)
