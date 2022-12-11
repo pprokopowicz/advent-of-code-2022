@@ -31,9 +31,9 @@ pub enum File {
 fn file_name(file: File) -> String {
     let index = file as u32;
     if index > 9 {
-        format!("crates/day{}/input.txt", index)
+        format!("inputs/day{}.txt", index)
     } else {
-        format!("crates/day0{}/input.txt", index)
+        format!("inputs/day0{}.txt", index)
     }
 }
 
