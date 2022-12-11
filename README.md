@@ -21,3 +21,4 @@ foo@bar:~$ cargo run -p day<day_number>
 - [08 - Treetop Tree House](crates/day08)
 - [09 - Rope Bridge](crates/day09)
 - [10 - Cathode-Ray Tube](crates/day10)
+- [11 - Monkey in the Middle](crates/day11)
