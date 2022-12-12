@@ -1,4 +1,5 @@
 use pathfinding::prelude::bfs;
+use std::cmp::min;
 
 use crate::point::Point;
 
@@ -6,32 +7,24 @@ pub const START: char = 'S';
 const END: char = 'E';
 
 pub fn solve(starting_char: Vec<char>, input: &Vec<String>) -> usize {
-    let start = starting_char
+    let end = &find(END, input)[0];
+
+    starting_char
         .iter()
         .flat_map(|c| find(*c, input))
-        .collect::<Vec<Point>>();
-
-    let end = &find(END, input)[0];
-    let mut shortest_len = usize::MAX;
-
-    start.iter().for_each(|start| {
-        let result = bfs(
-            start,
-            |point| available_successors(&point, input),
-            |point| point == end,
-        );
-
-        match result {
-            Some(result) => {
-                if shortest_len > result.len() {
-                    shortest_len = result.len()
-                }
-            }
-            None => {}
-        };
-    });
-
-    shortest_len - 1
+        .filter_map(|point| {
+            Some(
+                bfs(
+                    &point,
+                    |point| available_successors(&point, input),
+                    |point| point == end,
+                )?
+                .len(),
+            )
+        })
+        .reduce(|shortest, path| min(shortest, path))
+        .expect("No path found")
+        - 1
 }
 
 fn find(c: char, input: &Vec<String>) -> Vec<Point> {
@@ -52,24 +45,19 @@ fn find(c: char, input: &Vec<String>) -> Vec<Point> {
 fn all_successors(point: &Point, input: &Vec<String>) -> Vec<Point> {
     let mut output = vec![];
 
-    let can_move_left = point.x > 0;
-    let can_move_right = point.x < input[point.y].len() - 1;
-    let can_move_up = point.y > 0;
-    let can_move_down = point.y < input.len() - 1;
-
-    if can_move_left {
+    if point.x > 0 {
         output.push(Point::new(point.x - 1, point.y));
     }
 
-    if can_move_right {
+    if point.x < input[point.y].len() - 1 {
         output.push(Point::new(point.x + 1, point.y));
     }
 
-    if can_move_up {
+    if point.y > 0 {
         output.push(Point::new(point.x, point.y - 1));
     }
 
-    if can_move_down {
+    if point.y < input.len() - 1 {
         output.push(Point::new(point.x, point.y + 1));
     }
 
