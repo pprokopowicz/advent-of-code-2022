@@ -16,7 +16,7 @@ pub fn solve(starting_char: Vec<char>, input: &Vec<Vec<char>>) -> usize {
             Some(
                 bfs(
                     &point,
-                    |point| available_successors(&point, input),
+                    |point| successors(&point, input),
                     |point| point == end,
                 )?
                 .len(),
@@ -42,41 +42,39 @@ fn find(c: char, input: &Vec<Vec<char>>) -> Vec<Point> {
         .collect()
 }
 
-fn all_successors(point: &Point, input: &Vec<Vec<char>>) -> Vec<Point> {
+fn successors(point: &Point, input: &Vec<Vec<char>>) -> Vec<Point> {
+    let start = normalize(input[point.y][point.x]) as usize;
     let mut output = vec![];
 
     if point.x > 0 {
-        output.push(Point::new(point.x - 1, point.y));
+        let successor = normalize(input[point.y][point.x - 1]) as usize - 1;
+        if start >= successor {
+            output.push(Point::new(point.x - 1, point.y));
+        }
     }
 
     if point.x < input[point.y].len() - 1 {
-        output.push(Point::new(point.x + 1, point.y));
+        let successor = normalize(input[point.y][point.x + 1]) as usize - 1;
+        if start >= successor {
+            output.push(Point::new(point.x + 1, point.y));
+        }
     }
 
     if point.y > 0 {
-        output.push(Point::new(point.x, point.y - 1));
+        let successor = normalize(input[point.y - 1][point.x]) as usize - 1;
+        if start >= successor {
+            output.push(Point::new(point.x, point.y - 1));
+        }
     }
 
     if point.y < input.len() - 1 {
-        output.push(Point::new(point.x, point.y + 1));
+        let successor = normalize(input[point.y + 1][point.x]) as usize - 1;
+        if start >= successor {
+            output.push(Point::new(point.x, point.y + 1));
+        }
     }
 
     output
-}
-
-fn available_successors(start: &Point, input: &Vec<Vec<char>>) -> Vec<Point> {
-    let successors = all_successors(start, input);
-    let start = normalize(input[start.y][start.x]) as usize;
-
-    successors
-        .into_iter()
-        .filter(|point| {
-            let successor = input[point.y][point.x];
-            let successor = normalize(successor) as usize;
-
-            start >= successor - 1
-        })
-        .collect::<Vec<Point>>()
 }
 
 fn normalize(point: char) -> char {
