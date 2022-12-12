@@ -6,7 +6,7 @@ use crate::point::Point;
 pub const START: char = 'S';
 const END: char = 'E';
 
-pub fn solve(starting_char: Vec<char>, input: &Vec<String>) -> usize {
+pub fn solve(starting_char: Vec<char>, input: &Vec<Vec<char>>) -> usize {
     let end = &find(END, input)[0];
 
     starting_char
@@ -27,12 +27,12 @@ pub fn solve(starting_char: Vec<char>, input: &Vec<String>) -> usize {
         - 1
 }
 
-fn find(c: char, input: &Vec<String>) -> Vec<Point> {
+fn find(c: char, input: &Vec<Vec<char>>) -> Vec<Point> {
     input
         .iter()
         .enumerate()
         .filter_map(|(y, line)| {
-            let index = line.find(c);
+            let index = line.iter().position(|element| element == &c);
 
             match index {
                 None => None,
@@ -42,7 +42,7 @@ fn find(c: char, input: &Vec<String>) -> Vec<Point> {
         .collect()
 }
 
-fn all_successors(point: &Point, input: &Vec<String>) -> Vec<Point> {
+fn all_successors(point: &Point, input: &Vec<Vec<char>>) -> Vec<Point> {
     let mut output = vec![];
 
     if point.x > 0 {
@@ -64,15 +64,14 @@ fn all_successors(point: &Point, input: &Vec<String>) -> Vec<Point> {
     output
 }
 
-fn available_successors(start: &Point, input: &Vec<String>) -> Vec<Point> {
+fn available_successors(start: &Point, input: &Vec<Vec<char>>) -> Vec<Point> {
     let successors = all_successors(start, input);
-    let start = input[start.y].chars().nth(start.x).unwrap();
-    let start = normalize(start) as usize;
+    let start = normalize(input[start.y][start.x]) as usize;
 
     successors
         .into_iter()
         .filter(|point| {
-            let successor = input[point.y].chars().nth(point.x).unwrap();
+            let successor = input[point.y][point.x];
             let successor = normalize(successor) as usize;
 
             start >= successor - 1
