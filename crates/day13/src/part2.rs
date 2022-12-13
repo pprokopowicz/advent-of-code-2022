@@ -8,11 +8,11 @@ pub fn solve(input: &Vec<PacketPair>) {
     let div_packet_1 = vec![PacketType::List(vec![PacketType::Number(2)])];
     let div_packet_2 = vec![PacketType::List(vec![PacketType::Number(6)])];
 
-    let cloned = input.clone();
-    let mut input = cloned
+    let mut input = input
         .into_iter()
         .flat_map(|pair| vec![&pair.lhs, &pair.rhs])
         .collect::<Vec<&Vec<PacketType>>>();
+
     input.push(&div_packet_1);
     input.push(&div_packet_2);
 
