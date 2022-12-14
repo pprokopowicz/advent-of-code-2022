@@ -28,3 +28,4 @@ foo@bar:~$ cargo run -p day<day_number>
 - [11 - Monkey in the Middle](crates/day11)
 - [12 - Hill Climbing Algorithm](crates/day12)
 - [13 - Distress Signal](crates/day13)
+- [14 - Regolith Reservoir](crates/day14)
