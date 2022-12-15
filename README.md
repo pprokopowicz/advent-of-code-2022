@@ -15,6 +15,7 @@ foo@bar:~$ cargo run -p day<day_number>
 ```
 
 ## Days
+
 - [01 - Calorie Counting](crates/day01)
 - [02 - Rock Paper Scissors](crates/day02)
 - [03 - Rucksack Reorganization](crates/day03)
@@ -30,3 +31,11 @@ foo@bar:~$ cargo run -p day<day_number>
 - [13 - Distress Signal](crates/day13)
 - [14 - Regolith Reservoir](crates/day14)
 - [15 - Beacon Exclusion Zone](crates/day15)
+
+## Crates
+
+Here is the list of crates used in this project:
+- [pathfinding](https://github.com/samueltardieu/pathfinding)
+- [rayon](https://github.com/rayon-rs/rayon)
+- [serde](https://github.com/serde-rs/serde)
+- [serde_json](https://github.com/serde-rs/json)
